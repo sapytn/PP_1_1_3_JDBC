@@ -28,7 +28,11 @@ public class UserDaoJDBCImpl implements UserDao {
       connection.commit();
       connection.setAutoCommit(true);
     } catch (SQLException e) {
-      throw new RuntimeException(e);
+      try {
+        connection.rollback();
+      } catch (SQLException ex) {
+        throw new RuntimeException(ex);
+      }
     }
 
   }
@@ -42,7 +46,11 @@ public class UserDaoJDBCImpl implements UserDao {
       connection.commit();
       connection.setAutoCommit(true);
     } catch (SQLException e) {
-      throw new RuntimeException(e);
+      try {
+        connection.rollback();
+      } catch (SQLException ex) {
+        throw new RuntimeException(ex);
+      }
     }
 
   }
@@ -60,7 +68,11 @@ public class UserDaoJDBCImpl implements UserDao {
       connection.setAutoCommit(true);
       System.out.println("User с именем – " + name + " добавлен в базу данных");
     } catch (SQLException e) {
-      throw new RuntimeException(e);
+      try {
+        connection.rollback();
+      } catch (SQLException ex) {
+        throw new RuntimeException(ex);
+      }
     }
 
   }
@@ -75,7 +87,11 @@ public class UserDaoJDBCImpl implements UserDao {
       connection.commit();
       connection.setAutoCommit(true);
     } catch (SQLException e) {
-      throw new RuntimeException(e);
+      try {
+        connection.rollback();
+      } catch (SQLException ex) {
+        throw new RuntimeException(ex);
+      }
     }
 
   }
@@ -110,7 +126,11 @@ public class UserDaoJDBCImpl implements UserDao {
       connection.commit();
       connection.setAutoCommit(true);
     } catch (SQLException e) {
-      throw new RuntimeException(e);
+      try {
+        connection.rollback();
+      } catch (SQLException ex) {
+        throw new RuntimeException(ex);
+      }
     }
   }
 }
